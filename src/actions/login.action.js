@@ -4,30 +4,30 @@ import {
   LOGIN_FAILED,
   LOGOUT,
   LOGIN_STATUS,
-  server
+  server,
 } from "../Constants";
 import { httpClient } from "./../utils/HttpClient";
 
 export const setStateToFetching = () => ({
-  type: LOGIN_FETCHING
+  type: LOGIN_FETCHING,
 });
 
-export const setStateToSuccess = payload => ({
+export const setStateToSuccess = (payload) => ({
   type: LOGIN_SUCCESS,
-  payload
+  payload,
 });
 
-export const setStateToFailed = payload => ({
+export const setStateToFailed = (payload) => ({
   type: LOGIN_FAILED,
-  payload
+  payload,
 });
 
 export const setStateToLogout = () => ({
-  type: LOGOUT
+  type: LOGOUT,
 });
 
 export const login = ({ username, password, history }) => {
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch(setStateToFetching());
     // setTimeout(() => {
     //   dispatch(setStateToSuccess("ok"));
@@ -35,10 +35,10 @@ export const login = ({ username, password, history }) => {
     // }, 1000);
     const result = await httpClient.post(server.LOGIN_URL, {
       username,
-      password
+      password,
     });
 
-    if (result.data.result == "ok") {
+    if (result.data.result === "ok") {
       localStorage.setItem(LOGIN_STATUS, "ok");
       dispatch(setStateToSuccess("ok"));
       history.push("/stock");
@@ -50,9 +50,9 @@ export const login = ({ username, password, history }) => {
 };
 
 export const reLogin = () => {
-  return dispatch => {
+  return (dispatch) => {
     const loginStatus = localStorage.getItem(LOGIN_STATUS);
-    if (loginStatus == "ok") {
+    if (loginStatus === "ok") {
       dispatch(setStateToSuccess({}));
     }
   };
@@ -60,11 +60,11 @@ export const reLogin = () => {
 
 export const isLoggedIn = () => {
   const loginStatus = localStorage.getItem(LOGIN_STATUS);
-  return loginStatus == "ok";
+  return loginStatus === "ok";
 };
 
 export const logout = ({ history }) => {
-  return dispatch => {
+  return (dispatch) => {
     localStorage.removeItem(LOGIN_STATUS);
 
     dispatch(setStateToLogout());
@@ -72,14 +72,14 @@ export const logout = ({ history }) => {
   };
 };
 
-export const setSuccess = payload => {
-  return dispatch => {
+export const setSuccess = (payload) => {
+  return (dispatch) => {
     dispatch(setStateToSuccess(payload));
   };
 };
 
-export const hasError = payload => {
-  return dispatch => {
+export const hasError = (payload) => {
+  return (dispatch) => {
     dispatch(setStateToFailed(payload));
   };
 };

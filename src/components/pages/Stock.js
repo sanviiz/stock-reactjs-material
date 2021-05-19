@@ -2,7 +2,7 @@ import React from "react";
 import MaterialTable, { MTableToolbar } from "material-table";
 import { forwardRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { imageUrl } from "./../../Constants";
 import Moment from "react-moment";
 import NumberFormat from "react-number-format";
@@ -93,6 +93,7 @@ export default function Stock(props) {
               }}
             >
               <img
+                alt=""
                 src={`${imageUrl}/images/${selectedItem.image}`}
                 style={{ width: 50, height: 50, borderRadius: "5%" }}
               />
@@ -134,6 +135,7 @@ export default function Stock(props) {
       cellStyle: { padding: 0 },
       render: (item) => (
         <img
+          alt=""
           src={`${imageUrl}/images/${item.image}?dummy=${Math.random()}`}
           style={{ width: 70, height: 70, borderRadius: "5%" }}
         />
@@ -221,7 +223,7 @@ export default function Stock(props) {
           pageSize: 8,
           search: true,
           rowStyle: (rowData, index) => ({
-            backgroundColor: index % 2 == 0 ? "#f8faf9" : "#fff",
+            backgroundColor: index % 2 === 0 ? "#f8faf9" : "#fff",
           }),
         }}
         icons={tableIcons}

@@ -62,7 +62,7 @@ const Header = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            Warehouse Management System
           </Typography>
           <Button
             color="inherit"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, makeStyles, Paper } from "@material-ui/core";
+import { makeStyles, Paper } from "@material-ui/core";
 import { Line, Bar, Pie } from "react-chartjs-2";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { Button, ButtonGroup, IconButton } from "@material-ui/core";
@@ -97,7 +97,7 @@ export default function Report() {
 
   return (
     <Paper className={classes.root} elevation={10}>
-      <h1>Report</h1>
+      <h3>Report</h3>
 
       <ButtonGroup
         size="large"

@@ -1,15 +1,14 @@
 import axios from "axios";
 import join from "url-join";
 import {
-  server,
   apiUrl,
   NOT_CONNECT_NETWORK,
-  NETWORK_CONNECTION_MESSAGE
+  NETWORK_CONNECTION_MESSAGE,
 } from "../Constants";
 
 const isAbsoluteURLRegex = /^(?:\w+:)\/\//;
 
-axios.interceptors.request.use(async config => {
+axios.interceptors.request.use(async (config) => {
   if (!isAbsoluteURLRegex.test(config.url)) {
     config.url = join(apiUrl, config.url);
   }
@@ -18,10 +17,10 @@ axios.interceptors.request.use(async config => {
 });
 
 axios.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     debugger;
     console.log(JSON.stringify(error, undefined, 2));
     if (axios.isCancel(error)) {
@@ -29,7 +28,7 @@ axios.interceptors.response.use(
     } else if (!error.response) {
       return Promise.reject({
         code: NOT_CONNECT_NETWORK,
-        message: NETWORK_CONNECTION_MESSAGE
+        message: NETWORK_CONNECTION_MESSAGE,
       });
     }
     return Promise.reject(error);

@@ -5,42 +5,32 @@ import Axios from "axios";
 import Alert from "@material-ui/lab/Alert";
 
 import {
-  CardActions,
   Card,
   CardContent,
   CardMedia,
   Button,
   Typography,
   TextField,
-  Link,
-  Grid
 } from "@material-ui/core";
-import { apiUrl, server } from "../../Constants";
-import loginReducer from "../../reducers/login.reducer";
-import * as loginActions from "./../../actions/login.action";
-import { useDispatch, useSelector } from "react-redux";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345
+    maxWidth: 345,
   },
   media: {
-    height: 200
+    height: 200,
   },
   submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 export default function Register(props) {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const loginReducer = useSelector(({ loginReducer }) => loginReducer);
-
   const [isError, setIsError] = React.useState(false);
   const [showDialog, setShowDialog] = React.useState(false);
 
@@ -49,7 +39,7 @@ export default function Register(props) {
     handleChange,
     handleSubmit,
     setFieldValue,
-    isSubmitting
+    isSubmitting,
   }) {
     return (
       <form className={classes.form} noValidate onSubmit={handleSubmit}>
@@ -123,12 +113,12 @@ export default function Register(props) {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               Axios.post("http://localhost:8085/api/v2/authen/register", values)
-                .then(result => {
+                .then((result) => {
                   setSubmitting(false);
                   // alert(JSON.stringify(result.data));
                   const { data } = result;
                   debugger;
-                  if (data.result == "ok") {
+                  if (data.result === "ok") {
                     // dispatch(loginActions.setSuccess());
                     setShowDialog(true);
                   } else {
@@ -141,12 +131,12 @@ export default function Register(props) {
                     setIsError(true);
                   }
                 })
-                .catch(error => {
+                .catch((error) => {
                   setIsError(true);
                 });
             }}
           >
-            {props => showForm(props)}
+            {(props) => showForm(props)}
           </Formik>
         </CardContent>
       </Card>

@@ -33,7 +33,11 @@ export default function StockCreate(props) {
   const showPreviewImage = (values) => {
     if (values.file_obj) {
       return (
-        <img src={values.file_obj} style={{ height: 200, marginTop: 16 }} />
+        <img
+          alt=""
+          src={values.file_obj}
+          style={{ height: 200, marginTop: 16 }}
+        />
       );
     }
   };
@@ -78,6 +82,7 @@ export default function StockCreate(props) {
 
             <div className={classes.field}>
               <img
+                alt=""
                 src={`${process.env.PUBLIC_URL}/images/ic_photo.png`}
                 style={{ width: 25, height: 20 }}
               />
