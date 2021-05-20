@@ -121,7 +121,7 @@ export default function StockCreate(props) {
               Create
             </Button>
             <Button component={Link} to="/stock" color="default" raised>
-              Cancl
+              Cancel
             </Button>
           </CardActions>
         </Card>

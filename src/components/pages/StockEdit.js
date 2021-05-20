@@ -130,7 +130,7 @@ export default function StockEdit(props) {
               Edit
             </Button>
             <Button component={Link} to="/stock" color="default" raised>
-              Cancl
+              Cancel
             </Button>
           </CardActions>
         </Card>
