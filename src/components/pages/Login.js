@@ -39,7 +39,7 @@ export default function Login(props) {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image={`${process.env.PUBLIC_URL}/images/authen_header.jpg`}
+        image={`${process.env.PUBLIC_URL}/images/login.webp`}
         title="Contemplative Reptile"
       />
       <CardContent>
